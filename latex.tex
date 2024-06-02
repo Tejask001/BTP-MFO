@@ -52,14 +52,14 @@ The structure of the Moth-Flame Optimization (MFO) algorithm contains two key el
     \end{array}\right]
     \end{equation}
 
-Here, ‘n’ represents the number of moths. Both moths and flames share the same dimensions, serving as solutions within the algorithm. However, the moths function as the active search agents, while the flames represent the optimal positions discovered by the moths. During the search process, flames act as guiding markers, and moths follow them. Consequently, both positions are updated, minimizing the likelihood of losing the optimal position. The moths' positions are updated according to Eq. 1:
+Here, ‘n’ represents the number of moths. Both moths and flames share the same dimensions, serving as solutions within the algorithm. However, the moths function as the active search agents, while the flames represent the optimal positions discovered by the moths. During the search process, flames act as guiding markers, and moths follow them. Consequently, both positions are updated, minimizing the likelihood of losing the optimal position. The moths' positions are updated according to Eq.2:
 \begin{equation}
     M_i=S\left(M_i, F_j\right)
     \end{equation}
 
 In this equation, ‘Mi’ denotes the position of the ith moth, ‘Fj’ represents the position of the jth flame, and ‘S’ is the spiral function.
 
-The spiral motion, expressed logarithmically, is represented in Eq. 2:
+The spiral motion, expressed logarithmically, is represented in Eq. 3:
 \begin{equation}
     S\left(M_i, F_j\right)=D_i \times e^{b t} \times \cos (2 \pi t)+F_j
     \end{equation}
@@ -71,13 +71,12 @@ b = constant for spiral structure
 
 By updating the positions of moths and flames through these equations, the MFO algorithm ensures an efficient search process, enhancing the likelihood of finding optimal solutions. This structure, combining moths as search agents and flames as optimal markers, underpins the robustness and effectiveness of the MFO algorithm in navigating complex search spaces.
 
-D is computed as in Eq. 3.	
+D is computed as in Eq. 4.	
 \begin{equation}
     D_i=\left|F_j-M_i\right|
     \end{equation}
 
-Primarily, flames as well as moths remain identical in number which may lead to the reduction in diversification capability of contemporary solution by the way of moth’s deliberate ‘n’ dissimilar locations in search space for updation. The flames are updated by using Eq. 4. 
-
+Primarily, flames as well as moths remain identical in number which may lead to the reduction in diversification capability of contemporary solution by the way of moth’s deliberate ‘n’ dissimilar locations in search space for updation. The flames are updated by using Eq. 5. 
 
 \begin{equation}
 \mathrm{no\_Flame} = \mathrm{round}\left(F - i \ast \frac{F - 1}{\mathrm{Max\_gen}}\right)
