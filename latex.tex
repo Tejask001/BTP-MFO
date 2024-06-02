@@ -29,9 +29,64 @@ Nature-inspired algorithms fall into three main categories: evolutionary, physic
 The Moth-Flame Optimization (MFO) algorithm is a recent population-based metaheuristic developed by Mirjalili in 2015, modeled after the moths' navigation technique known as transverse orientation. Moths navigate at night using moonlight, maintaining a fixed angle to find their path. This behavior was formulated into an optimization technique combining a population-based algorithm with a local search strategy, enabling both global exploration and local exploitation. Like other metaheuristics, MFO is simple, flexible, and easy to implement, making it suitable for a wide range of problems. Due to these merits, MFO has been successfully applied to various optimization problems such as scheduling, inverse problems and parameter estimation, classification, economics, medical applications, power energy, and image processing.
 In nature, over 160,000 different species of moths have been identified, which share a similar life cycle with butterflies, involving larva and adult stages, with the transformation occurring within cocoons. One of the most fascinating aspects of moths’ lives is their unique nocturnal navigation method. Moths have evolved to fly at night using moonlight, employing a mechanism known as transverse orientation for navigation. This mechanism enables a moth to maintain a constant angle relative to the moon, effectively facilitating long-distance travel in a straight line. Since the moon is distant, this method ensures straight-line flight. Humans can use a similar navigation technique: if the moon is in the southern sky and a person wants to head east, they can walk straight by keeping the moon to their left. However, moths often spiral around lights instead of traveling straight. This is because transverse orientation is effective only when the light source is very distant, like the moon. Moths are frequently observed circling artificial or natural point light sources until they become exhausted. This behavior arises from the inefficiency of transverse orientation when the light source is nearby. Artificial lights, such as lamps or candles, cause moths to spiral towards them because of the short distance, leading moths to maintain the same angle with the light source. Thus, in the presence of artificial lights, moths exhibit spiral flight paths around the lights.
 The MFO algorithm has been widely used in physics-related fields. For instance, Hitarth Buch proposed an improved adaptive MFO algorithm to solve the optimal power flow problem, while Avishek Das used it to determine the optimal current excitation weights and spacing between array elements in a three-ring structure of the improved concentric antenna array (CCAA). Additionally, the MFO algorithm has applications in the medical field and beyond. For example, Gehad Ismail Sayed optimized the MFO population using neutrophils for automatic detection of mitosis in breast cancer tissue images, and Mingjing Wang applied a chaotic MFO algorithm to medical diagnosis, proposing a new learning scheme for a nuclear limit learning machine.
+<<<<<<< HEAD
+
+=======
 .
+>>>>>>> f56a541efe13fb7a70de08b8e09efa998994c62c
 \section{Moth Flame optimizer}
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum	
+\subsection{Inspiration}
+Moths are intricate insects, closely related to butterflies. With over 160,000 species, they represent a significant component of biodiversity. Moths have two main life stages: larvae and adult. The larvae transform into adult moths within cocoons.
+A fascinating aspect of moths is their unique nocturnal navigation. They have evolved to fly at night using moonlight, employing a mechanism known as transverse orientation. In this method, a moth maintains a fixed angle relative to the moon, enabling it to travel long distances in a straight path. This navigation method is effective because the moon is far away, ensuring a consistent directional cue. Humans can employ a similar strategy; if the moon is in the south and a person wants to travel east, keeping the moon on their left ensures an eastward path in a straight line.
+Despite the effectiveness of transverse orientation, moths often spiral around artificial lights. This behavior occurs because transverse orientation is only effective with distant light sources. When moths encounter artificial lights, they attempt to maintain the same angle, which results in a spiraling flight pattern. The artificial light confuses them because it is much closer than the moon, thereby disrupting their navigation method.
+This phenomenon highlights the adaptability and limitations of moths' natural navigation systems. While they are adept at using the moon for nocturnal navigation, human-made lights present a significant challenge. Understanding these behaviors provides insight into the complex interplay between natural instincts and anthropogenic influences, illustrating both the resilience and vulnerabilities of these remarkable insects.
+
+\subsection{MFO Structure}
+The structure of the Moth-Flame Optimization (MFO) algorithm contains two key elements: moths and flames. In this context, moths act as the search agents that navigate a complex d-dimensional space. Their positions are stored in a matrix M, while their corresponding fitness values are recorded in an array AM.
+\begin{equation}
+    A M=\left[\begin{array}{c}
+    A M_1 \\
+    A M_2 \\
+    \vdots \\
+    A M_n
+    \end{array}\right]
+    \end{equation}
+
+Here, ‘n’ represents the number of moths. Both moths and flames share the same dimensions, serving as solutions within the algorithm. However, the moths function as the active search agents, while the flames represent the optimal positions discovered by the moths. During the search process, flames act as guiding markers, and moths follow them. Consequently, both positions are updated, minimizing the likelihood of losing the optimal position. The moths' positions are updated according to Eq. 1:
+\begin{equation}
+    M_i=S\left(M_i, F_j\right)
+    \end{equation}
+
+In this equation, ‘Mi’ denotes the position of the ith moth, ‘Fj’ represents the position of the jth flame, and ‘S’ is the spiral function.
+
+The spiral motion, expressed logarithmically, is represented in Eq. 2:
+\begin{equation}
+    S\left(M_i, F_j\right)=D_i \times e^{b t} \times \cos (2 \pi t)+F_j
+    \end{equation}
+
+Where,
+b = constant for spiral structure
+ t = Arbitrary number of range [−1, 1]
+ Di = Euclidean distance in between ith moth and jth flame in d dimension
+
+By updating the positions of moths and flames through these equations, the MFO algorithm ensures an efficient search process, enhancing the likelihood of finding optimal solutions. This structure, combining moths as search agents and flames as optimal markers, underpins the robustness and effectiveness of the MFO algorithm in navigating complex search spaces.
+
+D is computed as in Eq. 3.	
+\begin{equation}
+    D_i=\left|F_j-M_i\right|
+    \end{equation}
+
+Primarily, flames as well as moths remain identical in number which may lead to the reduction in diversification capability of contemporary solution by the way of moth’s deliberate ‘n’ dissimilar locations in search space for updation. The flames are updated by using Eq. 4. 
+
+
+\begin{equation}
+\mathrm{no\_Flame} = \mathrm{round}\left(F - i \ast \frac{F - 1}{\mathrm{Max\_gen}}\right)
+\end{equation}
+
+where				
+i = Contemporary repetition number
+F = Extreme number of flames
+Maxgen = Maximum number of iterations 
 
 \section{Related Work}
 Moth-Flame Optimization Algorithm: Variants and 
